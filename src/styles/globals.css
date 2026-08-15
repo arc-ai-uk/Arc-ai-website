@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Background gradient */
+  --bg-primary: #071a1a;
+  --bg-secondary: #0a2e2e;
+  --bg-gradient-start: #071a1a;
+  --bg-gradient-mid: #0f3d3d;
+  --bg-gradient-end: #123d3b;
+
+  /* Accent / brand colors */
+  --accent-primary: #14b8a6;
+  --accent-secondary: #2dd4bf;
+  --accent-tertiary: #38bdf8;
+
+  /* Glass surfaces */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-blur: blur(16px);
+
+  /* Text */
+  --text-primary: #f5fafa;
+  --text-secondary: #a8c5c2;
+  --text-muted: #6b8b87;
+
+  /* Utility */
+  --success: #34d399;
+  --border-radius-glass: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    160deg,
+    var(--bg-gradient-start) 0%,
+    var(--bg-gradient-mid) 55%,
+    var(--bg-gradient-end) 100%
+  );
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Glassmorphism panel, shared across GlassCard + Header */
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--border-radius-glass);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
