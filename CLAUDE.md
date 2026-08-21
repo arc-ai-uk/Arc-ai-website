@@ -35,7 +35,7 @@ grid, case study cards, testimonial section, "How We Work" alternating blocks.
 
 ### 2.1 Who We Are
 
-> Arc-I is an AI-powered company built on three core strengths: full stack
+> Arc-I is an AI-powered company built on three core strengths: web & app
 > development, AI engineering, and marketing. We exist to bring modern, model-AI
 > technology within reach of small businesses that are often left behind by digital
 > transformation — from independent off-license shops to local service providers —
@@ -50,7 +50,7 @@ grid, case study cards, testimonial section, "How We Work" alternating blocks.
 - **Marketing Team** — Crafts promotional strategies across Facebook, Instagram,
   WhatsApp, Email, and influencer collaborations, designed to drive real customer
   growth and measurable sales gains.
-- **Full Stack Team** — Designs and builds websites and web applications (including
+- **Web & Apps Team** — Designs and builds websites and web applications (including
   e-commerce and mobile) tailored to support what the marketing strategy needs to
   succeed — fast, functional, and built to convert visitors into customers.
 - **Data & AI Team** — Tracks business performance, customer behavior, and sales
@@ -91,7 +91,7 @@ placeholder pending real content.
 - Email Marketing
 - Influencer Collaborations
 
-### 3.2 Full Stack Development
+### 3.2 Web & App Development
 - Website Development
 - React / Next.js
 - Shopify / E-commerce
@@ -120,14 +120,17 @@ routing if using Next.js — see Section 6).
 
 | Page | Route | Purpose |
 |---|---|---|
-| Home | `/` | Hero intro, 3-team overview, credibility strip (placeholder stats/logos), practice-area cards, featured case study teaser, CTA |
-| Services | `/services` | Deep dive into all 3 teams and their full skill sets (Section 3) |
+| Home | `/` | Hero intro, 3-team overview, practice-area cards, testimonials, CTA |
 | About | `/about` | Company story (Section 2.1–2.4), mission, Company Head section (placeholder), "How We Work" philosophy |
-| Case Studies | `/case-studies` | Placeholder project cards: client name, problem → solution → result format |
+| Services | `/services` | Deep dive into all 3 teams and their full skill sets (Section 3) |
 | Contact | `/contact` | Contact form (name, email, business type, message), email link, socials, "Book a Discovery Call" CTA |
 
+Nav order (Header/Footer): Home, About, Services, Contact — a Case Studies page was
+built initially but has been removed at the client's request; do not re-add it
+unless asked.
+
 Shared components across all pages:
-- Sticky/transparent header with logo (placeholder wordmark "Arc-I") + nav + CTA button
+- Sticky/transparent header with logo (`public/ArcAi-Icon.png`) + nav + CTA button
 - Footer with nav links, contact info (placeholder email `hello@arc-i.com`), social icons (placeholder links), copyright
 
 ---
@@ -140,24 +143,25 @@ Glassmorphism, dark-mode-first, tech/AI-forward aesthetic. Frosted-glass panels
 Generous whitespace, bold large headlines, smooth scroll-triggered fade/slide-in
 animations on sections.
 
-### 5.2 Color Palette (greenish-blue glass theme)
+### 5.2 Color Palette (navy-blue glass theme, matches logo)
 
 Use CSS custom properties / Tailwind theme config — do not hardcode hex values
-inline.
+inline. This palette is derived from the `public/favicon.svg` logo (dark navy
+background, blue glowing arc) — keep them in sync if the logo changes.
 
 ```css
 :root {
   /* Background gradient */
-  --bg-primary: #071A1A;        /* deep near-black teal, base background */
-  --bg-secondary: #0A2E2E;      /* dark teal */
-  --bg-gradient-start: #071A1A;
-  --bg-gradient-mid: #0F3D3D;
-  --bg-gradient-end: #123D3B;
+  --bg-primary: #05060D;        /* deep near-black navy, base background */
+  --bg-secondary: #0D1224;      /* dark indigo */
+  --bg-gradient-start: #05060D;
+  --bg-gradient-mid: #0D1224;
+  --bg-gradient-end: #101A33;
 
   /* Accent / brand colors */
-  --accent-primary: #14B8A6;    /* teal-emerald — primary CTA & highlights */
-  --accent-secondary: #2DD4BF;  /* bright cyan-green — hover states, glows */
-  --accent-tertiary: #38BDF8;   /* soft sky blue — secondary highlights */
+  --accent-primary: #2F6BFF;    /* brand blue — primary CTA & highlights */
+  --accent-secondary: #3FA9FF;  /* bright sky blue — hover states, glows */
+  --accent-tertiary: #7FB8FF;   /* soft light blue — secondary highlights */
 
   /* Glass surfaces */
   --glass-bg: rgba(255, 255, 255, 0.05);
@@ -166,8 +170,8 @@ inline.
 
   /* Text */
   --text-primary: #F5FAFA;      /* near-white */
-  --text-secondary: #A8C5C2;    /* muted soft gray-teal */
-  --text-muted: #6B8B87;
+  --text-secondary: #A8B5C9;    /* muted soft gray-blue */
+  --text-muted: #6B7B94;
 
   /* Utility */
   --success: #34D399;
@@ -177,10 +181,10 @@ inline.
 
 Design rules:
 - Glass cards: semi-transparent white fill (~5–8% opacity) + subtle 1px border
-  (~12% opacity white) + backdrop blur + soft drop shadow with a teal tint.
+  (~12% opacity white) + backdrop blur + soft drop shadow with a navy tint.
 - CTAs use `--accent-primary` → `--accent-secondary` gradient, with a soft glow on
   hover.
-- Avoid pure black or pure white — everything sits within the teal/green tonal
+- Avoid pure black or pure white — everything sits within the navy/blue tonal
   range for backgrounds; text stays near-white for contrast/accessibility.
 - Maintain WCAG AA contrast for all text against its background.
 
@@ -221,9 +225,9 @@ arc-i-website/
 ├── src/
 │   ├── components/
 │   │   ├── layout/        (Header, Footer, Layout wrapper)
-│   │   ├── sections/      (Hero, TeamOverview, CredibilityStrip, CaseStudyCard, etc.)
+│   │   ├── sections/      (Hero, TeamOverview, PracticeAreaGrid, etc.)
 │   │   └── ui/             (GlassCard, Button, Badge, etc. — reusable primitives)
-│   ├── pages/              (Home, Services, About, CaseStudies, Contact)
+│   ├── pages/              (Home, About, Services, Contact)
 │   ├── data/                (content.js or content.json — centralize all copy/skills lists here, sourced from Section 2 & 3 of this file)
 │   ├── styles/              (globals.css, tailwind config tokens)
 │   ├── App.jsx
@@ -255,11 +259,9 @@ Build to an industry-standard, portfolio-grade quality bar:
 
 | Item | Placeholder approach |
 |---|---|
-| Logo | Simple text wordmark "Arc-I" styled with brand gradient, `TODO: replace with real logo` |
+| Logo | Real asset in use: `public/ArcAi-Icon.png` (badge) / `public/favicon.svg` (tab icon) |
 | Company Head bio/photo | See Section 2.5 |
-| Case studies | 2–3 realistic dummy examples (e.g. "Local off-license boosts sales 40% with WhatsApp ordering bot") clearly stubbed as sample content |
 | Testimonials | Generic placeholder quotes + placeholder names/roles |
-| Client logos / credibility strip | Placeholder gray boxes or generic company-style badges, not real logos |
 | Contact form backend | Mocked submission (see 6.1) |
 | Email / phone / address | `hello@arc-i.com` / `+00 000 000 000` / "Address — TBD" |
 | Social links | `#` placeholders for LinkedIn, Instagram, Facebook icons in footer |
@@ -280,14 +282,14 @@ Build to an industry-standard, portfolio-grade quality bar:
    ```
 2. Configure `tailwind.config.js` with the color tokens from Section 5.2 and set
    `content` paths to `./index.html` and `./src/**/*.{js,jsx}`.
-3. Build out the folder structure from Section 6.2, implement all 5 pages and
+3. Build out the folder structure from Section 6.2, implement all 4 pages and
    shared components.
 4. Run the dev server and confirm it builds cleanly with no errors:
    ```bash
    npm run dev
    ```
 5. Verify locally in the browser (default `http://localhost:5173`):
-   - All 5 pages load and navigate correctly (Home, Services, About, Case Studies, Contact).
+   - All 4 pages load and navigate correctly (Home, About, Services, Contact).
    - Responsive check at mobile (375px), tablet (768px), and desktop (1440px) widths.
    - No console errors.
    - Glass/gradient theme renders correctly (no washed-out or unreadable text/contrast issues).
@@ -303,7 +305,7 @@ Build to an industry-standard, portfolio-grade quality bar:
 
 ## 9. Acceptance Checklist
 
-- [ ] All 5 pages exist and are reachable via nav
+- [ ] All 4 pages exist and are reachable via nav (Home, About, Services, Contact)
 - [ ] Content matches Section 2 (About) and Section 3 (Skills) verbatim
 - [ ] Color theme matches Section 5.2 tokens exactly (no off-palette colors introduced)
 - [ ] Glassmorphism styling applied consistently across cards/panels

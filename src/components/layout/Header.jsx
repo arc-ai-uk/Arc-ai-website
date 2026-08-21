@@ -22,13 +22,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
       <div className="glass-panel mx-auto flex max-w-6xl items-center justify-between px-5 py-3 backdrop-blur-glass">
-        <NavLink
-          to="/"
-          className="font-display text-xl font-bold bg-cta-gradient bg-clip-text text-transparent"
-          onClick={() => setOpen(false)}
-        >
-          {/* TODO: replace text wordmark with real logo */}
-          Arc-I
+        <NavLink to="/" className="flex items-center" onClick={() => setOpen(false)}>
+          <img src="/ArcAi-Icon.png" alt="Arc-I" className="h-12 w-12 rounded-lg sm:h-14 sm:w-14" />
         </NavLink>
 
         <nav className="hidden md:flex items-center gap-8" aria-label="Primary">

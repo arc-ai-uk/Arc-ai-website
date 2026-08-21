@@ -3,19 +3,17 @@
 
 export const nav = [
   { label: 'Home', to: '/' },
-  { label: 'Services', to: '/services' },
   { label: 'About', to: '/about' },
-  { label: 'Case Studies', to: '/case-studies' },
+  { label: 'Services', to: '/services' },
   { label: 'Contact', to: '/contact' },
 ]
 
 export const brand = {
   name: 'Arc-I',
-  // TODO: replace with real logo asset
-  tagline: 'AI, Web & Marketing — built for small business.',
+  tagline: "Build What's Next",
 }
 
-export const whoWeAre = `Arc-I is an AI-powered company built on three core strengths: full stack development, AI engineering, and marketing. We exist to bring modern, model-AI technology within reach of small businesses that are often left behind by digital transformation — from independent off-license shops to local service providers — helping them compete and grow in a market that increasingly runs on data, automation, and online presence.`
+export const whoWeAre = `Arc-I is an AI-powered company built on three core strengths: Web & App development, AI engineering, and Marketing. We exist to bring modern, model-AI technology within reach of small businesses that are often left behind by digital transformation — from independent off-license shops to local service providers — helping them compete and grow in a market that increasingly runs on data, automation, and online presence.`
 
 export const whatWeDoIntro = `We combine three specialist teams under one roof, so our clients get a single, connected solution instead of juggling separate agencies and freelancers.`
 
@@ -42,9 +40,9 @@ export const teams = [
   {
     key: 'fullstack',
     icon: 'Code2',
-    name: 'Full Stack Team',
+    name: 'Web & Apps Team',
     summary:
-      'Designs and builds websites and web applications (including e-commerce and mobile) tailored to support what the marketing strategy needs to succeed — fast, functional, and built to convert visitors into customers.',
+      'Builds the websites, online stores, and apps that bring your marketing strategy to life — fast, functional, and built to turn visitors into customers.',
     skills: [
       'Website Development',
       'React / Next.js',
@@ -118,50 +116,6 @@ export const practiceAreas = [
   },
 ]
 
-// TODO: replace with real, verified performance stats once available
-export const credibilityStats = [
-  { value: '3', label: 'Specialist Teams Under One Roof' },
-  { value: '40%+', label: 'Avg. Sales Uplift in Sample Case Studies' },
-  { value: '5', label: 'Marketing Channels Covered' },
-  { value: '100%', label: 'Focused on Small & Local Business' },
-]
-
-// TODO: replace gray placeholder badges with real client logos
-export const credibilityLogos = ['Client A', 'Client B', 'Client C', 'Client D', 'Client E']
-
-// TODO: replace with real, verified case studies
-export const caseStudies = [
-  {
-    slug: 'off-license-whatsapp-bot',
-    client: 'Local Off-License Store',
-    tag: 'Marketing + AI',
-    problem:
-      'A neighborhood off-license was losing repeat customers to delivery apps and had no direct online ordering channel.',
-    solution:
-      'Arc-I built a WhatsApp ordering chatbot integrated with a lightweight product catalog, paired with targeted Instagram and WhatsApp broadcast campaigns.',
-    result: 'Sample result: 40% increase in repeat-customer sales within the first quarter.',
-  },
-  {
-    slug: 'service-provider-booking-site',
-    client: 'Local Service Provider',
-    tag: 'Full Stack',
-    problem:
-      'A local service business relied entirely on phone bookings and word of mouth, capping how many customers they could reach.',
-    solution:
-      'Arc-I designed and built a fast, mobile-first booking website with integrated enquiry forms and local SEO fundamentals.',
-    result: 'Sample result: 3x increase in inbound enquiries within two months of launch.',
-  },
-  {
-    slug: 'retail-dashboard-rollout',
-    client: 'Small Retail Enterprise',
-    tag: 'Data & AI',
-    problem:
-      'Ownership had no consolidated view of sales trends across locations and made restocking decisions on gut feel.',
-    solution:
-      'Arc-I deployed a Power BI dashboard connected to point-of-sale data, with predictive restocking alerts.',
-    result: 'Sample result: Reduced stockouts and freed up hours of manual reporting per week.',
-  },
-]
 
 // TODO: replace with real testimonials and named contacts
 export const testimonials = [
@@ -190,7 +144,7 @@ export const howWeWork = [
     step: '02',
     title: 'Design & Build',
     description:
-      'Marketing, full stack, and data & AI teams work together from day one, so every deliverable supports the same growth goal.',
+      'Marketing, web & apps, and data & AI teams work together from day one, so every deliverable supports the same growth goal.',
   },
   {
     step: '03',

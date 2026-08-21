@@ -4,16 +4,16 @@
 
 :root {
   /* Background gradient */
-  --bg-primary: #071a1a;
-  --bg-secondary: #0a2e2e;
-  --bg-gradient-start: #071a1a;
-  --bg-gradient-mid: #0f3d3d;
-  --bg-gradient-end: #123d3b;
+  --bg-primary: #05060d;
+  --bg-secondary: #0d1224;
+  --bg-gradient-start: #05060d;
+  --bg-gradient-mid: #0d1224;
+  --bg-gradient-end: #101a33;
 
   /* Accent / brand colors */
-  --accent-primary: #14b8a6;
-  --accent-secondary: #2dd4bf;
-  --accent-tertiary: #38bdf8;
+  --accent-primary: #2f6bff;
+  --accent-secondary: #3fa9ff;
+  --accent-tertiary: #7fb8ff;
 
   /* Glass surfaces */
   --glass-bg: rgba(255, 255, 255, 0.05);
@@ -22,8 +22,8 @@
 
   /* Text */
   --text-primary: #f5fafa;
-  --text-secondary: #a8c5c2;
-  --text-muted: #6b8b87;
+  --text-secondary: #a8b5c9;
+  --text-muted: #6b7b94;
 
   /* Utility */
   --success: #34d399;

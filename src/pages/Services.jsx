@@ -6,7 +6,7 @@ import CTASection from '../components/sections/CTASection'
 export default function Services() {
   usePageMeta(
     'Services — Arc-I',
-    'Explore the full skill set of Arc-I’s Marketing, Full Stack, and Data & AI teams.',
+    'Explore the full skill set of Arc-I’s Marketing, Web & Apps, and Data & AI teams.',
   )
 
   return (
@@ -16,7 +16,7 @@ export default function Services() {
           <SectionHeading
             eyebrow="Services"
             title="Everything Your Business Needs, Under One Roof"
-            description="Marketing, full stack development, and data & AI — three specialist teams, working from the same growth goal."
+            description="Marketing, web & app development, and data & AI — three specialist teams, working from the same growth goal."
           />
         </div>
       </section>

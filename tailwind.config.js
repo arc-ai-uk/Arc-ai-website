@@ -4,18 +4,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg-primary': '#071A1A',
-        'bg-secondary': '#0A2E2E',
-        'gradient-start': '#071A1A',
-        'gradient-mid': '#0F3D3D',
-        'gradient-end': '#123D3B',
-        'accent-primary': '#14B8A6',
-        'accent-secondary': '#2DD4BF',
-        'accent-tertiary': '#38BDF8',
+        'bg-primary': '#05060D',
+        'bg-secondary': '#0D1224',
+        'gradient-start': '#05060D',
+        'gradient-mid': '#0D1224',
+        'gradient-end': '#101A33',
+        'accent-primary': '#2F6BFF',
+        'accent-secondary': '#3FA9FF',
+        'accent-tertiary': '#7FB8FF',
         'glass-border': 'rgba(255, 255, 255, 0.12)',
         'text-primary': '#F5FAFA',
-        'text-secondary': '#A8C5C2',
-        'text-muted': '#6B8B87',
+        'text-secondary': '#A8B5C9',
+        'text-muted': '#6B7B94',
         success: '#34D399',
       },
       backgroundColor: {
@@ -32,8 +32,8 @@ export default {
         glass: '16px',
       },
       boxShadow: {
-        glass: '0 8px 32px rgba(6, 40, 38, 0.45)',
-        glow: '0 0 24px rgba(45, 212, 191, 0.35)',
+        glass: '0 8px 32px rgba(5, 8, 20, 0.45)',
+        glow: '0 0 24px rgba(63, 169, 255, 0.35)',
       },
       backgroundImage: {
         'app-gradient':
