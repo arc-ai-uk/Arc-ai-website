@@ -71,15 +71,15 @@ export const teams = [
   },
 ]
 
-// TODO: replace with real leadership bio, name, title, and photo
+// TODO: replace initials avatar with a real headshot photo
 export const companyHead = {
-  isPlaceholder: true,
-  name: 'Company Head Name',
+  photoPending: true,
+  name: 'Yuvarani Shanmugaraj',
   title: 'Founder & Company Head',
-  initials: 'CH',
+  initials: 'YS',
   bio: [
-    'Placeholder bio line one — background and experience pending final copy.',
-    'Placeholder bio line two — leadership philosophy and focus areas pending final copy.',
+    'Yuvarani founded Arc-I after 7+ years leading marketing strategy and brand growth across B2B SaaS, healthcare, and logistics companies.',
+    "She built Arc-I to bring that same data-driven marketing and brand-building approach — usually reserved for larger companies — within reach of small, local businesses.",
   ],
 }
 
