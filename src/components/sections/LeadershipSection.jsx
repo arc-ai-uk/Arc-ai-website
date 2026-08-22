@@ -21,11 +21,6 @@ export default function LeadershipSection() {
           </div>
 
           <div>
-            {companyHead.photoPending && (
-              <div className="mb-1 inline-block rounded-full border border-glass-border bg-white/5 px-3 py-1 text-xs uppercase tracking-widest text-text-muted">
-                Photo coming soon
-              </div>
-            )}
             <h3 className="font-display text-xl font-semibold text-text-primary">
               {companyHead.name}
             </h3>

@@ -73,7 +73,6 @@ export const teams = [
 
 // TODO: replace initials avatar with a real headshot photo
 export const companyHead = {
-  photoPending: true,
   name: 'Yuvarani Shanmugaraj',
   title: 'Founder & Company Head',
   initials: 'YS',

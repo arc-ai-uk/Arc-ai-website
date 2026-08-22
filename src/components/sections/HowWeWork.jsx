@@ -25,7 +25,7 @@ export default function HowWeWork() {
                 <span className="font-display text-4xl font-bold text-accent-primary/60 sm:text-5xl">
                   {item.step}
                 </span>
-                <div>
+                <div className="sm:min-w-0 sm:flex-1">
                   <h3 className="font-display text-xl font-semibold text-text-primary">
                     {item.title}
                   </h3>
