@@ -1,12 +1,19 @@
 import { useState } from 'react'
-import { Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react'
+import { Mail, Phone, MapPin, CheckCircle2, AlertCircle } from 'lucide-react'
 import usePageMeta from '../hooks/usePageMeta'
 import SectionHeading from '../components/ui/SectionHeading'
 import GlassCard from '../components/ui/GlassCard'
 import Button from '../components/ui/Button'
-import { contactInfo, businessTypes } from '../data/content'
+import { contactInfo, businessTypes, countryCodes, web3FormsAccessKey } from '../data/content'
 
-const initialForm = { name: '', email: '', businessType: businessTypes[0], message: '' }
+const initialForm = {
+  name: '',
+  email: '',
+  countryCode: countryCodes[0].code,
+  phone: '',
+  businessType: businessTypes[0],
+  message: '',
+}
 
 function validate(form) {
   const errors = {}
@@ -15,6 +22,9 @@ function validate(form) {
     errors.email = 'Please enter your email.'
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
     errors.email = 'Please enter a valid email address.'
+  }
+  if (form.phone.trim() && !/^[0-9\s-]{4,}$/.test(form.phone.trim())) {
+    errors.phone = 'Please enter a valid phone number.'
   }
   if (!form.message.trim()) errors.message = 'Please tell us a bit about your business.'
   return errors
@@ -29,22 +39,50 @@ export default function Contact() {
   const [form, setForm] = useState(initialForm)
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm((f) => ({ ...f, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const validationErrors = validate(form)
     setErrors(validationErrors)
     if (Object.keys(validationErrors).length > 0) return
 
-    // TODO: replace with real submission endpoint (email service, CRM, or serverless function)
-    console.log('Contact form submitted (mock):', form)
-    setSubmitted(true)
-    setForm(initialForm)
+    setSubmitting(true)
+    setSubmitError(false)
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: web3FormsAccessKey,
+          subject: `New enquiry from ${form.name} — Arc-I Contact Form`,
+          name: form.name,
+          email: form.email,
+          phone: form.phone.trim() ? `${form.countryCode} ${form.phone.trim()}` : 'Not provided',
+          business_type: form.businessType,
+          message: form.message,
+        }),
+      })
+      const result = await response.json()
+
+      if (result.success) {
+        setSubmitted(true)
+        setForm(initialForm)
+      } else {
+        setSubmitError(true)
+      }
+    } catch {
+      setSubmitError(true)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -69,8 +107,7 @@ export default function Contact() {
                   Thanks — message received!
                 </h3>
                 <p className="max-w-sm text-sm text-text-secondary">
-                  This is a mock submission for demo purposes. We&apos;ll follow up soon to book
-                  your discovery call.
+                  We&apos;ll follow up soon to book your discovery call.
                 </p>
                 <Button variant="secondary" onClick={() => setSubmitted(false)}>
                   Send Another Message
@@ -123,6 +160,44 @@ export default function Contact() {
                 </div>
 
                 <div>
+                  <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-text-secondary">
+                    Phone Number <span className="text-text-muted">(optional)</span>
+                  </label>
+                  <div className="flex gap-2">
+                    <select
+                      id="countryCode"
+                      name="countryCode"
+                      value={form.countryCode}
+                      onChange={handleChange}
+                      aria-label="Country code"
+                      className="w-28 shrink-0 rounded-xl border border-glass-border bg-white/5 px-2 py-3 text-sm text-text-primary focus:border-accent-secondary focus:outline-none sm:w-32"
+                    >
+                      {countryCodes.map((c) => (
+                        <option key={c.code} value={c.code} className="bg-bg-secondary">
+                          {c.label}
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={form.phone}
+                      onChange={handleChange}
+                      aria-invalid={Boolean(errors.phone)}
+                      aria-describedby={errors.phone ? 'phone-error' : undefined}
+                      className="w-full flex-1 rounded-xl border border-glass-border bg-white/5 px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-accent-secondary focus:outline-none"
+                      placeholder="Phone number"
+                    />
+                  </div>
+                  {errors.phone && (
+                    <p id="phone-error" className="mt-1.5 text-xs text-red-300">
+                      {errors.phone}
+                    </p>
+                  )}
+                </div>
+
+                <div>
                   <label htmlFor="businessType" className="mb-1.5 block text-sm font-medium text-text-secondary">
                     Business Type
                   </label>
@@ -163,8 +238,21 @@ export default function Contact() {
                   )}
                 </div>
 
-                <Button type="submit" variant="primary" className="w-full sm:w-auto">
-                  Send Message
+                {submitError && (
+                  <p className="flex items-center gap-2 text-sm text-red-300">
+                    <AlertCircle size={16} />
+                    Something went wrong sending your message. Please try again or email us
+                    directly at {contactInfo.email}.
+                  </p>
+                )}
+
+                <Button
+                  type="submit"
+                  variant="primary"
+                  className="w-full sm:w-auto"
+                  disabled={submitting}
+                >
+                  {submitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             )}

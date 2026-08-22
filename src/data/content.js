@@ -217,6 +217,10 @@ export const howWeWork = [
   },
 ]
 
+// Web3Forms access key — safe to expose client-side (it's a public site
+// key tied to the receiving inbox, not a secret) per Web3Forms docs.
+export const web3FormsAccessKey = '2ea29fb5-1c14-4383-b59d-b58b3745af18'
+
 export const contactInfo = {
   // TODO: replace with real contact details
   email: 'arc.ai.co.uk@gmail.com',
@@ -228,6 +232,15 @@ export const contactInfo = {
     { label: 'Facebook', href: '#' },
   ],
 }
+
+export const countryCodes = [
+  { code: '+44', label: 'UK (+44)' },
+  { code: '+91', label: 'India (+91)' },
+  { code: '+1', label: 'US / Canada (+1)' },
+  { code: '+971', label: 'UAE (+971)' },
+  { code: '+61', label: 'Australia (+61)' },
+  { code: '+65', label: 'Singapore (+65)' },
+]
 
 export const businessTypes = [
   'Retail / Off-License',
