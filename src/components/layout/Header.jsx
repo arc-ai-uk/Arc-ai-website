@@ -53,7 +53,7 @@ export default function Header() {
 
       {open && (
         <nav
-          className="glass-panel mx-auto mt-2 flex max-w-6xl flex-col gap-4 px-5 py-5 md:hidden"
+          className="glass-panel mobile-nav-panel mx-auto mt-2 flex max-w-6xl flex-col gap-4 px-5 py-5 md:hidden"
           aria-label="Mobile"
         >
           {nav.map((item) => (

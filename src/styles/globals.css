@@ -68,6 +68,13 @@ h4 {
   border-radius: var(--border-radius-glass);
 }
 
+/* Mobile nav dropdown sits over scrolled page content (not just the hero),
+   so it needs a near-opaque backing to stay readable — the shared
+   glass-panel's 5% tint isn't enough contrast once real content is behind it. */
+.mobile-nav-panel {
+  background: rgba(13, 18, 36, 0.97);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
