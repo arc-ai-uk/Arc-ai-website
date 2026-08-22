@@ -217,6 +217,10 @@ export const howWeWork = [
   },
 ]
 
+// Web3Forms access key — safe to expose client-side (it's a public site
+// key tied to the receiving inbox, not a secret) per Web3Forms docs.
+export const web3FormsAccessKey = '2ea29fb5-1c14-4383-b59d-b58b3745af18'
+
 export const contactInfo = {
   // TODO: replace with real contact details
   email: 'arc.ai.co.uk@gmail.com',

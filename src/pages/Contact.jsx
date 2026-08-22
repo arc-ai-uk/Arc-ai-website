@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react'
+import { Mail, Phone, MapPin, CheckCircle2, AlertCircle } from 'lucide-react'
 import usePageMeta from '../hooks/usePageMeta'
 import SectionHeading from '../components/ui/SectionHeading'
 import GlassCard from '../components/ui/GlassCard'
 import Button from '../components/ui/Button'
-import { contactInfo, businessTypes } from '../data/content'
+import { contactInfo, businessTypes, web3FormsAccessKey } from '../data/content'
 
 const initialForm = { name: '', email: '', businessType: businessTypes[0], message: '' }
 
@@ -29,22 +29,49 @@ export default function Contact() {
   const [form, setForm] = useState(initialForm)
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm((f) => ({ ...f, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const validationErrors = validate(form)
     setErrors(validationErrors)
     if (Object.keys(validationErrors).length > 0) return
 
-    // TODO: replace with real submission endpoint (email service, CRM, or serverless function)
-    console.log('Contact form submitted (mock):', form)
-    setSubmitted(true)
-    setForm(initialForm)
+    setSubmitting(true)
+    setSubmitError(false)
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: web3FormsAccessKey,
+          subject: `New enquiry from ${form.name} — Arc-I Contact Form`,
+          name: form.name,
+          email: form.email,
+          business_type: form.businessType,
+          message: form.message,
+        }),
+      })
+      const result = await response.json()
+
+      if (result.success) {
+        setSubmitted(true)
+        setForm(initialForm)
+      } else {
+        setSubmitError(true)
+      }
+    } catch {
+      setSubmitError(true)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -69,8 +96,7 @@ export default function Contact() {
                   Thanks — message received!
                 </h3>
                 <p className="max-w-sm text-sm text-text-secondary">
-                  This is a mock submission for demo purposes. We&apos;ll follow up soon to book
-                  your discovery call.
+                  We&apos;ll follow up soon to book your discovery call.
                 </p>
                 <Button variant="secondary" onClick={() => setSubmitted(false)}>
                   Send Another Message
@@ -163,8 +189,21 @@ export default function Contact() {
                   )}
                 </div>
 
-                <Button type="submit" variant="primary" className="w-full sm:w-auto">
-                  Send Message
+                {submitError && (
+                  <p className="flex items-center gap-2 text-sm text-red-300">
+                    <AlertCircle size={16} />
+                    Something went wrong sending your message. Please try again or email us
+                    directly at {contactInfo.email}.
+                  </p>
+                )}
+
+                <Button
+                  type="submit"
+                  variant="primary"
+                  className="w-full sm:w-auto"
+                  disabled={submitting}
+                >
+                  {submitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             )}
