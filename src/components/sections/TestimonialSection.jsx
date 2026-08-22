@@ -9,8 +9,8 @@ export default function TestimonialSection() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading eyebrow="What Clients Say" title="Trusted by Small Businesses" />
 
-        {/* TODO: replace placeholder quotes with real testimonials */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        {/* TODO: replace with direct client quotes once confirmed with each business */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <GlassCard
               key={t.name + i}

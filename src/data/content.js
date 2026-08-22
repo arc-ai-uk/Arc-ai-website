@@ -5,6 +5,7 @@ export const nav = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
+  { label: 'Our Work', to: '/our-work' },
   { label: 'Contact', to: '/contact' },
 ]
 
@@ -117,19 +118,75 @@ export const practiceAreas = [
 ]
 
 
-// TODO: replace with real testimonials and named contacts
+// Case studies — real Arc-I clients. Copy is drafted from client outcomes;
+// TODO: swap in direct client quotes/sign-off once available, and real photos.
+export const caseStudies = [
+  {
+    key: 'ms-catering',
+    icon: 'ChefHat',
+    name: 'MS Catering Service',
+    location: 'Chennai',
+    industry: 'Catering & Events',
+    stat: '+40%',
+    statLabel: 'Revenue Growth',
+    challenge:
+      'MS Catering Service had strong word-of-mouth in Chennai but no real online presence — every new booking depended on someone already knowing them.',
+    approach:
+      'Arc-I took over their marketing, built them a professional website, and ran ongoing promotion to put the business in front of customers actively searching for catering services.',
+    result:
+      'The combined website and marketing push drove a 40% increase in revenue, turning an offline reputation into a steady stream of new bookings.',
+  },
+  {
+    key: 'nagas-kitchen',
+    icon: 'CookingPot',
+    name: "Naga's Kitchen",
+    location: 'Local Area',
+    industry: 'Home & Event Catering',
+    stat: '3x',
+    statLabel: 'More Clients',
+    challenge:
+      "Naga's Kitchen cooks and supplies food for weddings and local functions, with a loyal but small customer base limited to word-of-mouth in their immediate area.",
+    approach:
+      'We ran a targeted social media campaign alongside grassroots local marketing — pamphlets and posters — to put Naga\'s Kitchen in front of a much wider audience across the area.',
+    result:
+      'New client enquiries grew dramatically, turning a neighborhood favorite into a name booked for functions well beyond their original reach.',
+  },
+  {
+    key: 'kls-supermarket',
+    icon: 'ShoppingCart',
+    name: 'KLS Super Market',
+    location: 'Bangalore',
+    industry: 'Retail — General Store → Supermarket',
+    stat: '2',
+    statLabel: 'Branches Now Open',
+    challenge:
+      'KLS was a small general store in Bangalore looking to grow beyond its existing local footfall.',
+    approach:
+      'Arc-I led the marketing and promotion — including offers and lucky draws — to bring in new customers and keep them coming back.',
+    result:
+      'Revenue grew enough for KLS to convert from a general store into a full supermarket, and open a second branch — which Arc-I is now promoting as well.',
+  },
+]
+
+// TODO: replace with direct client quotes once confirmed with each business
 export const testimonials = [
   {
     quote:
-      'Arc-I brought our shop online in a way we never thought we could afford — and the results spoke for themselves.',
-    name: 'Placeholder Name',
-    role: 'Owner, Local Retail Shop',
+      'Arc-I took over our marketing and built our website from scratch. Within months our revenue was up 40% — bookings we simply never had before.',
+    name: 'Owner',
+    role: 'MS Catering Service, Chennai',
   },
   {
     quote:
-      'Having marketing, web, and data all handled by one team saved us so much time and confusion.',
-    name: 'Placeholder Name',
-    role: 'Founder, Local Service Business',
+      "The social media push and local posters and pamphlets Arc-I ran made a huge difference. We're getting far more clients for our functions now than ever before.",
+    name: 'Owner',
+    role: "Naga's Kitchen",
+  },
+  {
+    quote:
+      'Arc-I\'s promotions and offers brought in so many new customers that we grew from a small general store into a supermarket — and now they\'re helping us promote our second branch too.',
+    name: 'Owner',
+    role: 'KLS Super Market, Bangalore',
   },
 ]
 
@@ -162,7 +219,7 @@ export const howWeWork = [
 
 export const contactInfo = {
   // TODO: replace with real contact details
-  email: 'hello@arc-i.com',
+  email: 'arc.ai.co.uk@gmail.com',
   phone: '+00 000 000 000',
   address: 'Address — TBD',
   socials: [
