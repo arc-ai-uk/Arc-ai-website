@@ -71,15 +71,14 @@ export const teams = [
   },
 ]
 
-// TODO: replace with real leadership bio, name, title, and photo
+// TODO: replace initials avatar with a real headshot photo
 export const companyHead = {
-  isPlaceholder: true,
-  name: 'Company Head Name',
+  name: 'Yuvarani Shanmugaraj',
   title: 'Founder & Company Head',
-  initials: 'CH',
+  initials: 'YS',
   bio: [
-    'Placeholder bio line one — background and experience pending final copy.',
-    'Placeholder bio line two — leadership philosophy and focus areas pending final copy.',
+    'Yuvarani founded Arc-I after 7+ years leading marketing strategy and brand growth across B2B SaaS, healthcare, and logistics companies.',
+    "She built Arc-I to bring that same data-driven marketing and brand-building approach — usually reserved for larger companies — within reach of small, local businesses.",
   ],
 }
 
@@ -222,10 +221,9 @@ export const howWeWork = [
 export const web3FormsAccessKey = '2ea29fb5-1c14-4383-b59d-b58b3745af18'
 
 export const contactInfo = {
-  // TODO: replace with real contact details
   email: 'arc.ai.co.uk@gmail.com',
-  phone: '+00 000 000 000',
-  address: 'Address — TBD',
+  phone: '+44-7586252763',
+  address: 'Crayford, United Kingdom, DA1 4FQ',
   socials: [
     { label: 'LinkedIn', href: '#' },
     { label: 'Instagram', href: '#' },

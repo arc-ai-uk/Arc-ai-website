@@ -15,15 +15,12 @@ export default function LeadershipSection() {
           transition={{ duration: 0.5 }}
           className="mt-12 flex flex-col items-center gap-5 border-dashed text-center sm:flex-row sm:text-left"
         >
-          {/* TODO: replace initials avatar with real headshot photo */}
+          {/* TODO: replace initials avatar with a real headshot photo */}
           <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-accent-secondary/50 bg-white/5 font-display text-2xl font-semibold text-accent-secondary">
             {companyHead.initials}
           </div>
 
           <div>
-            <div className="mb-1 inline-block rounded-full border border-glass-border bg-white/5 px-3 py-1 text-xs uppercase tracking-widest text-text-muted">
-              Placeholder — pending real bio
-            </div>
             <h3 className="font-display text-xl font-semibold text-text-primary">
               {companyHead.name}
             </h3>
