@@ -4,9 +4,16 @@ import usePageMeta from '../hooks/usePageMeta'
 import SectionHeading from '../components/ui/SectionHeading'
 import GlassCard from '../components/ui/GlassCard'
 import Button from '../components/ui/Button'
-import { contactInfo, businessTypes, web3FormsAccessKey } from '../data/content'
+import { contactInfo, businessTypes, countryCodes, web3FormsAccessKey } from '../data/content'
 
-const initialForm = { name: '', email: '', businessType: businessTypes[0], message: '' }
+const initialForm = {
+  name: '',
+  email: '',
+  countryCode: countryCodes[0].code,
+  phone: '',
+  businessType: businessTypes[0],
+  message: '',
+}
 
 function validate(form) {
   const errors = {}
@@ -15,6 +22,9 @@ function validate(form) {
     errors.email = 'Please enter your email.'
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
     errors.email = 'Please enter a valid email address.'
+  }
+  if (form.phone.trim() && !/^[0-9\s-]{4,}$/.test(form.phone.trim())) {
+    errors.phone = 'Please enter a valid phone number.'
   }
   if (!form.message.trim()) errors.message = 'Please tell us a bit about your business.'
   return errors
@@ -55,6 +65,7 @@ export default function Contact() {
           subject: `New enquiry from ${form.name} — Arc-I Contact Form`,
           name: form.name,
           email: form.email,
+          phone: form.phone.trim() ? `${form.countryCode} ${form.phone.trim()}` : 'Not provided',
           business_type: form.businessType,
           message: form.message,
         }),
@@ -144,6 +155,44 @@ export default function Contact() {
                   {errors.email && (
                     <p id="email-error" className="mt-1.5 text-xs text-red-300">
                       {errors.email}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-text-secondary">
+                    Phone Number <span className="text-text-muted">(optional)</span>
+                  </label>
+                  <div className="flex gap-2">
+                    <select
+                      id="countryCode"
+                      name="countryCode"
+                      value={form.countryCode}
+                      onChange={handleChange}
+                      aria-label="Country code"
+                      className="w-28 shrink-0 rounded-xl border border-glass-border bg-white/5 px-2 py-3 text-sm text-text-primary focus:border-accent-secondary focus:outline-none sm:w-32"
+                    >
+                      {countryCodes.map((c) => (
+                        <option key={c.code} value={c.code} className="bg-bg-secondary">
+                          {c.label}
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={form.phone}
+                      onChange={handleChange}
+                      aria-invalid={Boolean(errors.phone)}
+                      aria-describedby={errors.phone ? 'phone-error' : undefined}
+                      className="w-full flex-1 rounded-xl border border-glass-border bg-white/5 px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-accent-secondary focus:outline-none"
+                      placeholder="Phone number"
+                    />
+                  </div>
+                  {errors.phone && (
+                    <p id="phone-error" className="mt-1.5 text-xs text-red-300">
+                      {errors.phone}
                     </p>
                   )}
                 </div>
