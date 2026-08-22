@@ -222,7 +222,7 @@ export const web3FormsAccessKey = '2ea29fb5-1c14-4383-b59d-b58b3745af18'
 
 export const contactInfo = {
   email: 'arc.ai.co.uk@gmail.com',
-  phone: '+44-4586252763',
+  phone: '+44-7586252763',
   address: 'Crayford, United Kingdom, DA1 4FQ',
   socials: [
     { label: 'LinkedIn', href: '#' },
