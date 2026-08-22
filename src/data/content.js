@@ -222,10 +222,9 @@ export const howWeWork = [
 export const web3FormsAccessKey = '2ea29fb5-1c14-4383-b59d-b58b3745af18'
 
 export const contactInfo = {
-  // TODO: replace with real contact details
   email: 'arc.ai.co.uk@gmail.com',
-  phone: '+00 000 000 000',
-  address: 'Address — TBD',
+  phone: '+44-4586252763',
+  address: 'Crayford, United Kingdom, DA1 4FQ',
   socials: [
     { label: 'LinkedIn', href: '#' },
     { label: 'Instagram', href: '#' },

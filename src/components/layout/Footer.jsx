@@ -41,7 +41,6 @@ export default function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-widest text-text-muted">
               Contact
             </h3>
-            {/* TODO: replace placeholder contact details with real info */}
             <a
               href={`mailto:${contactInfo.email}`}
               className="flex items-center gap-2 text-sm text-text-secondary hover:text-accent-secondary transition-colors"

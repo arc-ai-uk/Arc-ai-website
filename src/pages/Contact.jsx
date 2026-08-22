@@ -267,7 +267,6 @@ export default function Contact() {
                 Prefer to talk it through? Reach out directly and we&apos;ll find a time that
                 works.
               </p>
-              {/* TODO: replace placeholder contact details with real info */}
               <div className="mt-5 flex flex-col gap-3 text-sm text-text-secondary">
                 <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-2 hover:text-accent-secondary transition-colors">
                   <Mail size={16} /> {contactInfo.email}
