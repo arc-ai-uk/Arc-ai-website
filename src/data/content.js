@@ -234,8 +234,8 @@ export const contactInfo = {
 }
 
 export const countryCodes = [
-  { code: '+91', label: 'India (+91)' },
   { code: '+44', label: 'UK (+44)' },
+  { code: '+91', label: 'India (+91)' },
   { code: '+1', label: 'US / Canada (+1)' },
   { code: '+971', label: 'UAE (+971)' },
   { code: '+61', label: 'Australia (+61)' },
