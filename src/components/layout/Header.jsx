@@ -23,7 +23,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 px-4 pt-4">
       <div className="glass-panel mx-auto flex max-w-6xl items-center justify-between px-5 py-3 backdrop-blur-glass">
         <NavLink to="/" className="flex items-center" onClick={() => setOpen(false)}>
-          <img src="/ArcAi-Icon.png" alt="Arc-I" className="h-12 w-12 rounded-lg sm:h-14 sm:w-14" />
+          <img src={`${import.meta.env.BASE_URL}ArcAi-Icon.png`} alt="Arc-I" className="h-12 w-12 rounded-lg sm:h-14 sm:w-14" />
         </NavLink>
 
         <nav className="hidden md:flex items-center gap-8" aria-label="Primary">

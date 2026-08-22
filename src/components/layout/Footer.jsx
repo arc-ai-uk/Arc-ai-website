@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="glass-panel mx-auto flex max-w-6xl flex-col gap-10 px-6 py-10 sm:px-10">
         <div className="flex flex-col gap-10 sm:flex-row sm:justify-between">
           <div className="max-w-sm">
-            <img src="/ArcAi-Icon.png" alt={brand.name} className="h-14 w-14 rounded-lg" />
+            <img src={`${import.meta.env.BASE_URL}ArcAi-Icon.png`} alt={brand.name} className="h-14 w-14 rounded-lg" />
             <p className="mt-3 text-sm leading-relaxed text-text-secondary">{brand.tagline}</p>
           </div>
 
